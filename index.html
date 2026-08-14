@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrustPro Accounting — Numbers You Can Trust. Success You Can Build.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#062B5C;
+    --navy-deep:#031D3D;
+    --green:#2E8B57;
+    --green-light:#DFF4E5;
+    --white:#FFFFFF;
+    --offwhite:#F7F9FC;
+    --text-gray:#5F6B7A;
+    --line:#E3E8EF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;color:var(--text-gray);background:var(--white);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,.display{font-family:'Oswald',sans-serif;letter-spacing:0.02em;color:var(--navy);line-height:1.1;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px;}
+  section{position:relative;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1200px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-mark{width:88px;height:88px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .brand-mark img{width:100%;height:100%;object-fit:contain;}
+  .brand-text .name{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(32px,5vw,48px);letter-spacing:0.03em;line-height:1;}
+  .brand-text .name .t1{color:var(--navy);}
+  .brand-text .name .t2{color:var(--green);}
+  .brand-text .tag{font-size:14px;letter-spacing:0.08em;color:var(--text-gray);text-transform:uppercase;}
+  @media (max-width:480px){
+    .nav{padding:12px 16px;}
+    .brand{gap:8px;}
+    .brand-mark{width:48px;height:48px;}
+    .brand-text .name{font-size:19px;}
+    .brand-text .tag{font-size:8.5px;letter-spacing:0.05em;}
+  }
+  .nav-links ul{list-style:none;display:flex;gap:28px;}
+  .nav-links a{font-size:14px;font-weight:500;color:var(--navy);}
+  .nav-links a:hover{color:var(--green);}
+  .nav-links .btn,.nav-links .btn:hover{color:var(--white);}
+  .nav-links{display:flex;align-items:center;gap:28px;}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:var(--white);padding:11px 22px;border-radius:8px;font-weight:600;font-size:14px;border:1px solid transparent;transition:.15s;}
+  .btn:hover{background:var(--green);transform:translateY(-1px);}
+  .btn-ghost{background:none;color:var(--navy);border:1px solid var(--line);}
+  .btn-ghost:hover{border-color:var(--green);color:var(--green);background:var(--green-light);}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--green);outline-offset:2px;border-radius:4px;}
+
+  .menu-toggle{display:none;flex-direction:column;gap:5px;background:none;border:0;padding:8px;cursor:pointer;}
+  .menu-toggle span{width:24px;height:2px;background:var(--navy);border-radius:2px;}
+  @media (max-width:820px){
+    .menu-toggle{display:flex;}
+    .nav-links{position:fixed;top:73px;left:0;right:0;background:var(--white);flex-direction:column;align-items:stretch;gap:0;padding:8px 28px 20px;border-bottom:1px solid var(--line);box-shadow:0 16px 30px -20px rgba(6,43,92,0.25);transform:translateY(-8px);opacity:0;pointer-events:none;transition:.18s;}
+    .nav-links.open{transform:translateY(0);opacity:1;pointer-events:auto;}
+    .nav-links ul{flex-direction:column;gap:0;}
+    .nav-links ul li{border-bottom:1px solid var(--line);}
+    .nav-links ul a{display:block;padding:14px 4px;}
+    .nav-links .btn{margin:14px 4px 4px;justify-content:center;}
+  }
+
+  /* HERO */
+  .hero{position:relative;background:var(--white);}
+  .hero-bg{display:block;width:100%;height:auto;}
+  .hero-overlay{position:absolute;inset:0;display:flex;align-items:center;z-index:2;}
+  .hero-inner{max-width:1200px;margin:0 auto;padding:0 28px;width:100%;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;color:var(--green);background:var(--green-light);border:1px solid var(--line);padding:6px 12px;border-radius:100px;margin-bottom:20px;}
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--green);}
+  .hero-copy{max-width:460px;}
+  .hero-copy h1{font-size:clamp(28px,4.2vw,44px);margin:0 0 16px;}
+  .hero-copy h1 span{display:block;}
+  .hero-copy h1 .t-navy{color:var(--navy);}
+  .hero-copy h1 .t-green{color:var(--green);}
+  .hero-copy p.lead{font-size:16px;color:var(--text-gray);max-width:420px;margin:0 0 28px;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero .btn{background:var(--green);}
+  .hero .btn:hover{background:var(--green);filter:brightness(0.94);}
+  .hero .btn-ghost{background:var(--white);color:var(--navy);border:1px solid var(--navy);}
+  .hero .btn-ghost:hover{background:var(--green-light);border-color:var(--green);color:var(--green);}
+  .hero-stats{background:var(--white);border:1px solid var(--line);border-radius:20px;box-shadow:0 24px 48px -28px rgba(6,43,92,0.25);display:flex;flex-wrap:wrap;gap:18px;padding:26px 32px;max-width:1140px;margin:-56px auto 40px;position:relative;z-index:3;}
+  .hero-stats .stat{display:flex;align-items:center;gap:14px;padding:4px 18px;border-right:1px solid var(--line);flex:1;min-width:210px;}
+  .hero-stats .stat:last-child{border-right:none;}
+  .hero-stats .stat .ic{width:42px;height:42px;border-radius:50%;background:var(--green-light);color:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .hero-stats .stat .ic svg{width:20px;height:20px;}
+  .hero-stats .stat .num{font-weight:700;color:var(--navy);font-size:15px;}
+  .hero-stats .stat .sub{font-size:13px;color:var(--text-gray);}
+  @media (max-width:820px){
+    .hero{display:flex;flex-direction:column;}
+    .hero-overlay{position:static;order:-1;padding:32px 0 24px;}
+    .hero-bg{order:1;}
+    .hero-copy{max-width:none;text-align:center;margin:0 auto;}
+    .hero-copy p.lead{margin-left:auto;margin-right:auto;}
+    .hero-ctas{justify-content:center;}
+    .hero-stats{margin-top:24px;justify-content:center;}
+    .hero-stats .stat{border-right:none;justify-content:center;min-width:45%;}
+  }
+
+  /* SERVICES */
+  .services{padding:64px 0;border-top:1px solid var(--line);background:var(--white);}
+  .section-head{text-align:center;max-width:620px;margin:0 auto 40px;}
+  .section-head h2{font-size:clamp(24px,3vw,32px);margin-bottom:10px;}
+  .section-head p{color:var(--text-gray);font-size:15px;}
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .svc-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:24px 22px;transition:.15s;}
+  .svc-card:hover{border-color:var(--green);box-shadow:0 12px 24px -16px rgba(6,43,92,0.18);transform:translateY(-2px);}
+  .svc-card .ic{width:40px;height:40px;border-radius:10px;background:var(--green-light);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .svc-card .ic svg{width:20px;height:20px;color:var(--green);}
+  .svc-card h3{font-size:16.5px;margin-bottom:6px;}
+  .svc-card p{font-size:13.5px;color:var(--text-gray);}
+  @media (max-width:820px){.svc-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.svc-grid{grid-template-columns:1fr;}}
+
+  /* TOOLS */
+  .tools{padding:56px 0;border-top:1px solid var(--line);background:var(--white);}
+  .tool-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
+  .tool-badge{background:var(--white);display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:20px 10px;border:1px solid var(--line);border-radius:14px;transition:.15s;}
+  .tool-badge:hover{border-color:var(--green);box-shadow:0 12px 24px -18px rgba(6,43,92,0.18);transform:translateY(-2px);}
+  .tool-ic{width:44px;height:44px;border-radius:50%;background:var(--green-light);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;}
+  .tool-ic svg{width:21px;height:21px;}
+  .tool-badge span{font-size:12px;font-weight:600;color:var(--navy);line-height:1.3;}
+  @media (max-width:820px){.tool-grid{grid-template-columns:repeat(3,1fr);}}
+  @media (max-width:480px){.tool-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* REPORTS / DASHBOARD */
+  .reports{padding:64px 0;background:var(--offwhite);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .reports-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+  .reports-grid .eyebrow{margin-bottom:16px;}
+  .reports-grid h2{font-size:clamp(24px,3vw,32px);margin-bottom:16px;text-align:left;}
+  .reports-grid p{color:var(--text-gray);font-size:15px;margin-bottom:14px;}
+  .reports-grid ul{list-style:none;margin-top:18px;}
+  .reports-grid li{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--navy);font-weight:500;margin-bottom:10px;}
+  .reports-grid li svg{width:16px;height:16px;color:var(--green);flex-shrink:0;}
+  @media (max-width:820px){.reports-grid{grid-template-columns:1fr;}}
+
+  .report-mock{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:26px 26px 22px;box-shadow:0 24px 48px -28px rgba(6,43,92,0.22);}
+  .report-mock-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;}
+  .report-mock-title{font-family:'Oswald',sans-serif;font-size:15px;letter-spacing:0.03em;color:var(--navy);text-transform:uppercase;}
+  .report-mock-period{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-gray);}
+  .report-mock-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px;}
+  .report-mock-stats div{border:1px solid var(--line);border-radius:10px;padding:10px 12px;}
+  .rm-val{display:block;font-family:'Oswald',sans-serif;font-size:16px;color:var(--navy);}
+  .rm-val.rm-positive{color:var(--green);}
+  .rm-lbl{display:block;font-size:10.5px;color:var(--text-gray);text-transform:uppercase;letter-spacing:0.03em;margin-top:2px;}
+  .report-mock-chart{display:flex;align-items:flex-end;gap:8px;height:110px;padding-top:10px;border-top:1px dashed var(--line);}
+  .report-mock-chart .bar{flex:1;background:var(--green);border-radius:4px 4px 0 0;}
+  .report-mock-note{margin-top:14px;font-size:11px;color:var(--text-gray);text-align:center;}
+
+  /* STORY / TRUCKING */
+  .story{padding:64px 0;background:var(--navy-deep);border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);}
+  .story-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:48px;align-items:center;}
+  .story-grid .eyebrow{margin-bottom:16px;}
+  .story .eyebrow{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.18);color:#A7E8B5;}
+  .story-grid h2{font-size:clamp(24px,3vw,32px);margin-bottom:16px;text-align:left;color:#fff;}
+  .story-grid p{color:rgba(255,255,255,0.70);font-size:15px;margin-bottom:14px;}
+  .story-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .story-stat{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:22px 20px;}
+  .story-stat .val{font-family:'Oswald',sans-serif;font-size:30px;color:var(--green);display:block;margin-bottom:4px;}
+  .story-stat .lbl{font-size:12.5px;color:rgba(255,255,255,0.70);letter-spacing:0.03em;}
+  @media (max-width:820px){.story-grid{grid-template-columns:1fr;}}
+
+  /* PRICING */
+  .pricing{padding:64px 0;background:var(--offwhite);}
+  .price-table{background:var(--white);border:1px solid var(--line);border-radius:16px;overflow:hidden;max-width:760px;margin:0 auto;box-shadow:0 20px 40px -26px rgba(6,43,92,0.16);}
+  .price-table-head{display:grid;grid-template-columns:1fr 1fr;background:var(--navy);color:var(--white);padding:16px 26px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.08em;}
+  .price-table-head span:last-child{text-align:right;}
+  .price-row{display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:18px 26px;border-top:1px solid var(--line);}
+  .price-row.talk{background:var(--green-light);border-left:3px solid var(--green);}
+  .trucks{font-family:'Oswald',sans-serif;font-size:16.5px;color:var(--navy);}
+  .rate-col{text-align:right;}
+  .rate-col .amount{font-family:'Oswald',sans-serif;font-size:22px;color:var(--green);}
+  .rate-col .unit{font-size:12px;color:var(--text-gray);margin-left:3px;}
+  .price-note{text-align:center;color:var(--text-gray);font-size:13px;margin-top:22px;}
+  @media (max-width:600px){.price-table-head{display:none;}.price-row{padding:16px 18px;}.rate-col{text-align:left;margin-top:6px;}.price-row{grid-template-columns:1fr;}}
+
+  /* FAQ */
+  .faq{padding:64px 0;background:var(--white);border-top:1px solid var(--line);}
+  .faq-list{max-width:720px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);padding:6px 0;}
+  .faq-item summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 2px;cursor:pointer;font-family:'Inter',sans-serif;text-transform:none;letter-spacing:0;font-size:16px;font-weight:600;color:var(--navy);}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary .plus{flex-shrink:0;width:22px;height:22px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--green);font-size:16px;transition:.15s;}
+  .faq-item[open] summary .plus{transform:rotate(45deg);background:var(--green-light);border-color:var(--green);}
+  .faq-item p{font-size:14.5px;color:var(--text-gray);padding:0 2px 16px;}
+
+  /* CTA */
+  .cta-band{padding:64px 0 80px;background:var(--white);}
+  .cta-inner{
+    background:
+      linear-gradient(180deg,rgba(3,29,61,0.74),rgba(3,29,61,0.8)),
+      url('assets/hero-truck.png') center 35%/cover no-repeat;
+    border-radius:20px;padding:48px;text-align:center;color:var(--white);position:relative;overflow:hidden;
+  }
+  .cta-inner h2{color:var(--white);font-size:clamp(22px,2.6vw,30px);margin-bottom:10px;position:relative;text-transform:uppercase;}
+  .cta-inner p{color:rgba(255,255,255,0.72);font-size:14.5px;margin-bottom:24px;position:relative;}
+  .cta-inner .btn{background:var(--green);color:var(--white);position:relative;}
+  .cta-inner .btn:hover{filter:brightness(0.94);}
+
+  footer{padding:40px 0 28px;background:#021A35;font-size:13px;color:rgba(255,255,255,0.65);}
+  .footer-top{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center;margin-bottom:24px;}
+  .footer-links{display:flex;flex-wrap:wrap;gap:22px;list-style:none;}
+  .footer-links a{font-weight:500;color:rgba(255,255,255,0.65);}
+  .footer-links a:hover{color:var(--green);}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.10);padding-top:20px;font-size:12.5px;}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="brand-mark"><img src="newlogo.png" alt="TrustPro Accounting logo"></div>
+      <div class="brand-text">
+        <div class="name"><span class="t1">TrustPro</span> <span class="t2">Accounting</span></div>
+        <div class="tag">Numbers You Can Trust · Success You Can Build</div>
+      </div>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a href="#contact" class="btn">Book a Free Consult</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <img class="hero-bg" src="assets/last-hero.png" alt="TrustPro Accounting branded truck on the highway">
+  <div class="hero-overlay">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="dot"></span> ACCOUNTING FOR THE TRUCKING INDUSTRY</div>
+        <h1><span class="t-navy">Better Numbers.</span><span class="t-green">A Stronger Tomorrow.</span></h1>
+        <p class="lead">Bookkeeping, tax support and financial solutions built specifically for carrier companies.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn">Book a Free Consult <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="#services" class="btn btn-ghost">See Our Services</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="7" width="13" height="10" rx="1"/><path d="M14 10h4l3 3v4h-3"/><circle cx="6" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></div>
+      <div><div class="num">100%</div><div class="sub">Trucking Focused</div></div>
+    </div>
+    <div class="stat">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V14M10 20V10M16 20V6M21 20V12"/></svg></div>
+      <div><div class="num">Real</div><div class="sub">Financial Visibility</div></div>
+    </div>
+    <div class="stat">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 13v-1a8 8 0 0116 0v1"/><rect x="2" y="13" width="5" height="7" rx="2"/><rect x="17" y="13" width="5" height="7" rx="2"/><path d="M20 20a4 4 0 01-4 4h-2"/></svg></div>
+      <div><div class="num">1:1</div><div class="sub">Dedicated Support</div></div>
+    </div>
+    <div class="stat">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div>
+      <div><div class="num">Your Growth</div><div class="sub">Is Our Priority</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What we handle</h2>
+      <p>Everything a general accountant skips — done as standard.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg></div>
+        <h3>Bookkeeping</h3>
+        <p>Monthly books, reconciliations, AP/AR, payroll, and expense tracking.</p>
+      </div>
+      <div class="svc-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div>
+        <h3>Cash Flow Management</h3>
+        <p>Budget planning, forecasting, and visibility into where your money is going.</p>
+      </div>
+      <div class="svc-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <h3>Settlements &amp; Factoring</h3>
+        <p>Driver settlements and factoring pay-outs reconciled against every load.</p>
+      </div>
+      <div class="svc-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 15l4-4 3 3 5-6"/></svg></div>
+        <h3>Load &amp; Fleet Profitability</h3>
+        <p>Profitability by load and by truck, plus KPI dashboard reporting.</p>
+      </div>
+      <div class="svc-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h3"/><path d="M9 21v-3h6v3"/></svg></div>
+        <h3>Tax Support</h3>
+        <p>Tax-ready statements, 1099s, sales tax, and year-end close, with CPA coordination.</p>
+      </div>
+      <div class="svc-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3>Business Consulting</h3>
+        <p>New company setup, cost reduction, and growth planning as you scale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tools">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Fits into how you already work</h2>
+      <p>We plug into the accounting, spreadsheet, and payout tools your business already runs on.</p>
+    </div>
+    <div class="tool-grid">
+      <div class="tool-badge">
+        <div class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v16"/></svg></div>
+        <span>Bookkeeping Software</span>
+      </div>
+      <div class="tool-badge">
+        <div class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div>
+        <span>Spreadsheets &amp; Reports</span>
+      </div>
+      <div class="tool-badge">
+        <div class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></div>
+        <span>Bank &amp; Card Feeds</span>
+      </div>
+      <div class="tool-badge">
+        <div class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l4 4-4 4M21 6H8a5 5 0 000 10h1M7 22l-4-4 4-4M3 18h13a5 5 0 000-10h-1"/></svg></div>
+        <span>Factoring Portals</span>
+      </div>
+      <div class="tool-badge">
+        <div class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M2 21v-2a5 5 0 015-5h4a5 5 0 015 5v2"/><circle cx="18" cy="7" r="2.5"/><path d="M17 11.5c2.3.3 4 1.8 4 4.5v2"/></svg></div>
+        <span>Payroll Systems</span>
+      </div>
+      <div class="tool-badge">
+        <div class="tool-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg></div>
+        <span>Tax Filing Tools</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reports" id="reports">
+  <div class="wrap reports-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> REPORTING</div>
+      <h2>Reports you can actually read.</h2>
+      <p>No jargon, no 40-tab spreadsheets. Every week you get a clean summary of revenue, costs, and margin per truck — built from your real books, not a template.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Revenue, expenses &amp; margin at a glance</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Delivered on your billing cycle, every week</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Exportable to the spreadsheet tools you use</li>
+      </ul>
+    </div>
+    <div>
+      <div class="report-mock">
+        <div class="report-mock-head">
+          <span class="report-mock-title">Fleet Report — Sample</span>
+          <span class="report-mock-period">AUG 2026</span>
+        </div>
+        <div class="report-mock-stats">
+          <div><span class="rm-val">$142.3K</span><span class="rm-lbl">Revenue</span></div>
+          <div><span class="rm-val">$98.1K</span><span class="rm-lbl">Expenses</span></div>
+          <div><span class="rm-val rm-positive">31%</span><span class="rm-lbl">Margin</span></div>
+        </div>
+        <div class="report-mock-chart">
+          <div class="bar" style="height:38%"></div>
+          <div class="bar" style="height:55%"></div>
+          <div class="bar" style="height:47%"></div>
+          <div class="bar" style="height:70%"></div>
+          <div class="bar" style="height:60%"></div>
+          <div class="bar" style="height:85%"></div>
+          <div class="bar" style="height:75%"></div>
+        </div>
+        <div class="report-mock-note">Illustrative sample — not real client data</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> OUR STORY</div>
+      <h2>Built by people who know the industry, not just the numbers.</h2>
+      <p>TrustPro Accounting started because too many carrier companies were handing their books to accountants who had never managed a driver settlement, never dealt with a factoring company, and never had to reconcile a fleet's worth of load sheets.</p>
+      <p>We built a firm around how carrier companies actually run — every driver settlement, every load, every truck — so every report we hand back is something you and your owner-operators can both trust.</p>
+    </div>
+    <div class="story-stats">
+      <div class="story-stat"><span class="val">100%</span><span class="lbl">FOCUSED ON TRUCKING &amp; LOGISTICS</span></div>
+      <div class="story-stat"><span class="val">Weekly</span><span class="lbl">BILLING, MATCHED TO YOUR PAY CYCLE</span></div>
+      <div class="story-stat"><span class="val">1:1</span><span class="lbl">DEDICATED SUPPORT, NOT A CALL QUEUE</span></div>
+      <div class="story-stat"><span class="val">Free</span><span class="lbl">FIRST CONSULT &amp; HISTORICAL CLEAN-UP</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Pricing</h2>
+      <p>Billed weekly per driver — the rate steps down as your fleet grows.</p>
+    </div>
+    <div class="price-table">
+      <div class="price-table-head"><span>FLEET SIZE</span><span>RATE PER DRIVER / WEEK</span></div>
+      <div class="price-row"><div class="trucks">1–5 trucks</div><div class="rate-col"><span class="amount">$25</span><span class="unit">/ driver / week</span></div></div>
+      <div class="price-row"><div class="trucks">6–10 trucks</div><div class="rate-col"><span class="amount">$20</span><span class="unit">/ driver / week</span></div></div>
+      <div class="price-row"><div class="trucks">11–20 trucks</div><div class="rate-col"><span class="amount">$18</span><span class="unit">/ driver / week</span></div></div>
+      <div class="price-row"><div class="trucks">21–30 trucks</div><div class="rate-col"><span class="amount">$16</span><span class="unit">/ driver / week</span></div></div>
+      <div class="price-row talk"><div class="trucks">30+ trucks</div><div class="rate-col"><a href="#contact" class="btn">Let's Talk</a></div></div>
+    </div>
+    <p class="price-note">Historical clean-up and your first consult are always free.</p>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head"><h2>Common questions</h2></div>
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>Why work with TrustPro Accounting instead of a general accountant?<span class="plus">+</span></summary>
+        <p>Trucking has its own rules — per diem, settlements, factoring, fleet costs. We build your books around how a fleet actually runs, not a generic template.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you work with my factoring company?<span class="plus">+</span></summary>
+        <p>Yes — we reconcile factoring pay-outs against your loads, whichever factoring company you use.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What if my books are behind?<span class="plus">+</span></summary>
+        <p>Historical clean-up is included. We'll get you current before starting the monthly rhythm.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is the first consult really free?<span class="plus">+</span></summary>
+        <p>Yes — no obligation. We'll look at where things stand and tell you honestly what needs work.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="wrap">
+    <div class="cta-inner">
+      <h2>Let's get your books road-ready.</h2>
+      <p>Book a free consult — no obligation, just a clear look at where your finances stand.</p>
+      <a href="mailto:hello@trustaccounting.com" class="btn">Book a Free Consult</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="name" style="font-family:'Oswald',sans-serif;font-weight:700;font-size:20px;"><span style="color:#fff">TrustPro</span> <span style="color:var(--green)">Accounting</span></div>
+      <ul class="footer-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Book a Free Consult</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">&copy; 2026 TrustPro Accounting. Built for carrier companies running owner-operators — from small fleets to growing carriers.</div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var toggle = document.getElementById('menuToggle');
+    var links = document.getElementById('navLinks');
+    if (toggle && links) {
+      toggle.addEventListener('click', function(){
+        var open = links.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      links.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){
+          links.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    var revealTargets = document.querySelectorAll('.section-head, .svc-card, .tool-badge, .reports-grid > div, .story-grid > div, .price-table, .faq-item, .cta-inner');
+    revealTargets.forEach(function(el){ el.classList.add('reveal'); });
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealTargets.forEach(function(el){ io.observe(el); });
+    } else {
+      revealTargets.forEach(function(el){ el.classList.add('in'); });
+    }
+  })();
+</script>
+
+</body>
+</html>
