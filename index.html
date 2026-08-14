@@ -74,17 +74,18 @@
     mask-image:linear-gradient(to right,transparent 0%,rgba(0,0,0,.12) 8%,rgba(0,0,0,.35) 18%,rgba(0,0,0,.70) 30%,#000 45%);}
   .hero-wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:110px;z-index:1;pointer-events:none;}
   .hero-inner{position:absolute;top:0;left:0;right:0;bottom:0;z-index:2;display:flex;align-items:center;}
-  .hero-container{max-width:1200px;margin:0 auto;padding:0 28px;width:100%;}
+  .hero-container{max-width:1200px;margin:0 auto;padding:0 16px;width:100%;}
   .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.08em;color:var(--green);background:var(--green-light);border:1px solid var(--line);padding:6px 12px;border-radius:100px;margin-bottom:20px;}
   .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--green);}
-  .hero-copy{max-width:520px;padding-bottom:96px;}
-  .hero-copy h1{font-size:clamp(26px,3.4vw,42px);font-weight:700;margin:0 0 16px;white-space:nowrap;}
+  .hero-copy{max-width:640px;padding-bottom:96px;}
+  .hero-copy .eyebrow{font-size:13px;padding:8px 16px;}
+  .hero-copy h1{font-size:clamp(34px,5vw,58px);font-weight:700;margin:0 0 18px;white-space:nowrap;}
   .hero-copy h1 span{display:block;}
   .hero-copy h1 .t-navy{color:var(--navy);}
   .hero-copy h1 .t-green{color:var(--green);}
-  .hero-copy p.lead{font-size:16px;color:var(--text-gray);max-width:420px;margin:0 0 28px;}
-  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
-  .hero .btn{background:var(--green);}
+  .hero-copy p.lead{font-size:19px;color:var(--text-gray);max-width:520px;margin:0 0 32px;}
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero .btn{background:var(--green);padding:14px 28px;font-size:16px;}
   .hero .btn:hover{background:var(--green);filter:brightness(0.94);}
   .hero .btn-ghost{background:var(--white);color:var(--navy);border:1px solid var(--navy);}
   .hero .btn-ghost:hover{background:var(--green-light);border-color:var(--green);color:var(--green);}
@@ -97,6 +98,7 @@
   .hero-stats .stat .sub{font-size:13px;color:var(--text-gray);}
   @media (max-width:820px){
     .hero{padding:32px 0 0;}
+    .hero-container{padding:0 24px;}
     .hero-visual{display:flex;flex-direction:column;height:auto;overflow:visible;}
     .hero-inner{position:relative;inset:auto;order:-1;display:block;}
     .hero-copy{max-width:none;text-align:center;margin:0 auto;padding-bottom:32px;}
