@@ -212,6 +212,19 @@
   .cta-inner .btn{background:var(--green);color:var(--white);position:relative;}
   .cta-inner .btn:hover{filter:brightness(0.94);}
 
+  .contact-info{padding:16px 0 64px;background:var(--white);}
+  .contact-grid{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
+  .contact-item{display:flex;align-items:center;gap:16px;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:22px 26px;flex:1;min-width:260px;max-width:360px;transition:.15s;}
+  .contact-item:hover{border-color:var(--green);box-shadow:0 16px 30px -20px rgba(6,43,92,0.25);transform:translateY(-2px);}
+  .contact-item .ic{width:46px;height:46px;border-radius:50%;background:var(--green-light);color:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .contact-item .ic svg{width:22px;height:22px;}
+  .contact-item .label{font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-gray);margin-bottom:4px;}
+  .contact-item .value{font-weight:600;color:var(--navy);font-size:15px;line-height:1.4;}
+  @media (max-width:820px){
+    .contact-grid{flex-direction:column;align-items:stretch;}
+    .contact-item{max-width:none;}
+  }
+
   footer{padding:40px 0 28px;background:#021A35;font-size:13px;color:rgba(255,255,255,0.65);}
   .footer-top{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center;margin-bottom:24px;}
   .footer-links{display:flex;flex-wrap:wrap;gap:22px;list-style:none;}
@@ -471,7 +484,26 @@
     <div class="cta-inner">
       <h2>Let's get your books road-ready.</h2>
       <p>Book a free consult — no obligation, just a clear look at where your finances stand.</p>
-      <a href="mailto:hello@trustaccounting.com" class="btn">Book a Free Consult</a>
+      <a href="mailto:nick@trustproacc.com" class="btn">Book a Free Consult</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact-info">
+  <div class="wrap">
+    <div class="contact-grid">
+      <a class="contact-item" href="tel:+13312952101">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+        <div><div class="label">Call Us</div><div class="value">(331) 295-2101</div></div>
+      </a>
+      <a class="contact-item" href="mailto:nick@trustproacc.com">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></div>
+        <div><div class="label">Email Us</div><div class="value">nick@trustproacc.com</div></div>
+      </a>
+      <a class="contact-item" href="https://maps.google.com/?q=1811+W+Diehl+Road,+Suite+200,+Naperville,+IL+60563" target="_blank" rel="noopener">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="label">Visit Us</div><div class="value">1811 W Diehl Road, Suite 200<br>Naperville, IL 60563</div></div>
+      </a>
     </div>
   </div>
 </section>
