@@ -153,7 +153,7 @@
   .rm-val.rm-positive{color:var(--green);}
   .rm-lbl{display:block;font-size:10.5px;color:var(--text-gray);text-transform:uppercase;letter-spacing:0.03em;margin-top:2px;}
   .report-mock-chart{display:flex;align-items:flex-end;gap:8px;height:110px;padding-top:10px;border-top:1px dashed var(--line);}
-  .report-mock-chart .bar{flex:1;background:var(--green);border-radius:4px 4px 0 0;}
+  .report-mock-chart .bar{flex:1;background:var(--green);border-radius:4px 4px 0 0;transition:height .7s cubic-bezier(.22,1,.36,1);}
   .report-mock-note{margin-top:14px;font-size:11px;color:var(--text-gray);text-align:center;}
 
   /* STORY / TRUCKING */
@@ -182,6 +182,25 @@
   .rate-col .unit{font-size:12px;color:var(--text-gray);margin-left:3px;}
   .price-note{text-align:center;color:var(--text-gray);font-size:13px;margin-top:22px;}
   @media (max-width:600px){.price-table-head{display:none;}.price-row{padding:16px 18px;}.rate-col{text-align:left;margin-top:6px;}.price-row{grid-template-columns:1fr;}}
+
+  /* SETTLEMENT */
+  .settlement{padding:64px 0;background:var(--white);border-top:1px solid var(--line);}
+  .settlement-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+  .settlement-grid .eyebrow{margin-bottom:16px;}
+  .settlement-grid h2{font-size:clamp(24px,3vw,32px);margin-bottom:16px;text-align:left;}
+  .settlement-grid p{color:var(--text-gray);font-size:15px;margin-bottom:14px;}
+  .settlement-grid ul{list-style:none;margin-top:18px;}
+  .settlement-grid li{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--navy);font-weight:500;margin-bottom:10px;}
+  .settlement-grid li svg{width:16px;height:16px;color:var(--green);flex-shrink:0;}
+  @media (max-width:820px){.settlement-grid{grid-template-columns:1fr;}}
+
+  .settlement-mock{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:26px 26px 22px;box-shadow:0 24px 48px -28px rgba(6,43,92,0.22);}
+  .settlement-rows{margin-top:4px;}
+  .settlement-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed var(--line);font-size:14px;color:var(--text-gray);}
+  .settlement-row .sr-val{font-family:'IBM Plex Mono',monospace;color:var(--navy);font-size:13.5px;}
+  .settlement-row .sr-val.sr-neg{color:#B23A2E;}
+  .settlement-net{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding:14px 16px;background:var(--green-light);border-radius:10px;border-left:3px solid var(--green);font-family:'Oswald',sans-serif;font-size:14px;color:var(--navy);text-transform:uppercase;letter-spacing:0.02em;}
+  .settlement-net .sr-val{font-family:'Oswald',sans-serif;font-size:20px;color:var(--green);letter-spacing:0;}
 
   /* FAQ */
   .faq{padding:64px 0;background:var(--white);border-top:1px solid var(--line);}
@@ -423,6 +442,37 @@
   </div>
 </section>
 
+<section class="settlement" id="settlement">
+  <div class="wrap settlement-grid">
+    <div>
+      <div class="settlement-mock">
+        <div class="report-mock-head">
+          <span class="report-mock-title">Driver Settlement — Sample</span>
+          <span class="report-mock-period">WK 33 · 2026</span>
+        </div>
+        <div class="settlement-rows">
+          <div class="settlement-row"><span>Gross Pay</span><span class="sr-val">$3,240.00</span></div>
+          <div class="settlement-row"><span>Fuel Deduction</span><span class="sr-val sr-neg">-$412.50</span></div>
+          <div class="settlement-row"><span>Insurance</span><span class="sr-val sr-neg">-$85.00</span></div>
+          <div class="settlement-row"><span>Escrow</span><span class="sr-val sr-neg">-$50.00</span></div>
+        </div>
+        <div class="settlement-net"><span>Net Pay</span><span class="sr-val">$2,692.50</span></div>
+        <div class="report-mock-note">Illustrative sample — not a real driver's pay</div>
+      </div>
+    </div>
+    <div>
+      <div class="eyebrow"><span class="dot"></span> SETTLEMENTS</div>
+      <h2>A settlement your drivers can trust at a glance.</h2>
+      <p>Every deduction spelled out — fuel, insurance, escrow — so owner-operators see exactly how their net pay was calculated, not just a final number.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Matches your factoring company's pay-outs, load by load</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Delivered on the same cycle your drivers already expect</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> Fewer "why is my check short" calls to field</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section class="pricing" id="pricing">
   <div class="wrap">
     <div class="section-head">
@@ -527,7 +577,7 @@
       });
     }
 
-    var revealTargets = document.querySelectorAll('.section-head, .svc-card, .tool-badge, .reports-grid > div, .story-grid > div, .price-table, .faq-item, .cta-inner');
+    var revealTargets = document.querySelectorAll('.section-head, .svc-card, .tool-badge, .reports-grid > div, .story-grid > div, .settlement-grid > div, .price-table, .faq-item, .cta-inner');
     revealTargets.forEach(function(el){ el.classList.add('reveal'); });
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function(entries){
@@ -541,6 +591,48 @@
       revealTargets.forEach(function(el){ io.observe(el); });
     } else {
       revealTargets.forEach(function(el){ el.classList.add('in'); });
+    }
+
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var motionTargets = document.querySelectorAll('.report-mock, .story-stats, .settlement-mock');
+    if (!reduceMotion && motionTargets.length && 'IntersectionObserver' in window) {
+      var countUp = function(el){
+        var text = el.textContent.trim();
+        var m = text.match(/^(-?\$?)([\d,]+(?:\.\d+)?)([%KMB]?)$/);
+        if (!m) return;
+        var prefix = m[1], numStr = m[2].replace(/,/g, ''), suffix = m[3];
+        var target = parseFloat(numStr);
+        if (isNaN(target)) return;
+        var decimals = (numStr.split('.')[1] || '').length;
+        var duration = 900, start = null;
+        function step(ts){
+          if (!start) start = ts;
+          var p = Math.min((ts - start) / duration, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = prefix + (target * eased).toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      };
+      var growBars = function(container){
+        var bars = container.querySelectorAll('.bar');
+        bars.forEach(function(bar, i){
+          var target = bar.style.height;
+          bar.style.height = '0%';
+          setTimeout(function(){ bar.style.height = target; }, i * 70);
+        });
+      };
+      var motionIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting) {
+            var el = entry.target;
+            el.querySelectorAll('.rm-val, .story-stat .val, .sr-val').forEach(countUp);
+            growBars(el);
+            motionIO.unobserve(el);
+          }
+        });
+      }, { threshold: 0.3 });
+      motionTargets.forEach(function(el){ motionIO.observe(el); });
     }
   })();
 </script>
