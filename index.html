@@ -238,6 +238,10 @@
     .contact-item{max-width:none;}
   }
 
+  .map-embed{margin-top:24px;max-width:1100px;margin-left:auto;margin-right:auto;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 16px 30px -20px rgba(6,43,92,0.25);}
+  .map-embed iframe{display:block;width:100%;height:340px;border:0;}
+  @media (max-width:600px){.map-embed iframe{height:260px;}}
+
   footer{padding:40px 0 28px;background:#021A35;font-size:13px;color:rgba(255,255,255,0.65);}
   .footer-top{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:center;margin-bottom:24px;}
   .footer-links{display:flex;flex-wrap:wrap;gap:22px;list-style:none;}
@@ -541,6 +545,9 @@
         <div><div class="label">Visit Us</div><div class="value">1811 W Diehl Road, Suite 200<br>Naperville, IL 60563</div></div>
       </a>
     </div>
+    <div class="map-embed">
+      <iframe src="https://maps.google.com/maps?q=1811+W+Diehl+Road,+Suite+200,+Naperville,+IL+60563&amp;output=embed" title="TrustPro Accounting office location map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
   </div>
 </section>
 
@@ -577,7 +584,7 @@
       });
     }
 
-    var revealTargets = document.querySelectorAll('.section-head, .svc-card, .tool-badge, .reports-grid > div, .story-grid > div, .settlement-grid > div, .price-table, .faq-item, .cta-inner');
+    var revealTargets = document.querySelectorAll('.section-head, .svc-card, .tool-badge, .reports-grid > div, .story-grid > div, .settlement-grid > div, .price-table, .faq-item, .cta-inner, .map-embed');
     revealTargets.forEach(function(el){ el.classList.add('reveal'); });
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function(entries){
